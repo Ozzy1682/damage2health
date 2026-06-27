@@ -16,13 +16,11 @@ public class Damage2Health implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+public void onInitialize() {
+    LOGGER.info("Damage2Health loaded!");
 
-		LOGGER.info("Hello Fabric world!");
-	}
+    DamageEvents.register();
+}
 
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);
