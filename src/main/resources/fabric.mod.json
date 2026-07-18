@@ -3,9 +3,9 @@
 	"id": "damage2health",
 	"version": "${version}",
 	"name": "Damage2Health",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Increases your maximum health by the amount of damage you deal to mobs. Players are not affected.",
 	"authors": [
-		"Me!"
+		"jovial_curie49 (CurseForge) and fifteen54 (Modrinth)"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",

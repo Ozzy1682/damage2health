@@ -1,11 +1,6 @@
 package io.github.oz.damage2health.config;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
-
-@Config(name = "damage2health")
-public class Damage2HealthConfig implements ConfigData {
+public class Damage2HealthConfig {
 
     /*
      * General
@@ -30,8 +25,6 @@ public class Damage2HealthConfig implements ConfigData {
      */
 
     public boolean showAttributeFixWarning = true;
-
-    public boolean requireAttributeFixForUnlimitedHealth = true;
 
     public double vanillaHealthCap = 1024.0;
 

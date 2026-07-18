@@ -1,5 +1,6 @@
 package io.github.oz.damage2health;
 
+import io.github.oz.damage2health.config.ConfigManager;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import org.slf4j.Logger;
@@ -10,23 +11,28 @@ public class Damage2Health implements ModInitializer {
     public static final String MOD_ID = "damage2health";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+    /**
+     * True if AttributeFix is installed.
+     */
     public static boolean ATTRIBUTE_FIX_INSTALLED = false;
 
     @Override
     public void onInitialize() {
 
+        // Load configuration
+        ConfigManager.load();
+
         ATTRIBUTE_FIX_INSTALLED =
                 FabricLoader.getInstance().isModLoaded("attributefix");
 
         if (ATTRIBUTE_FIX_INSTALLED) {
-            LOGGER.info("AttributeFix detected.");
-            LOGGER.info("Unlimited health is enabled.");
-        } else {
-            LOGGER.warn("==============================================");
-            LOGGER.warn("AttributeFix was NOT detected.");
-            LOGGER.warn("Health will be visually limited to 512 hearts.");
+            LOGGER.info("AttributeFix detected. Unlimited max health is enabled.");
+        } else if (ConfigManager.getConfig().showAttributeFixWarning) {
+            LOGGER.warn("========================================");
+            LOGGER.warn("AttributeFix was NOT detected!");
+            LOGGER.warn("Maximum health will be limited to vanilla.");
             LOGGER.warn("Install AttributeFix for unlimited health.");
-            LOGGER.warn("==============================================");
+            LOGGER.warn("========================================");
         }
 
         LOGGER.info("Damage2Health initialized.");

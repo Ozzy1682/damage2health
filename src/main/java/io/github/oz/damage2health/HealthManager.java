@@ -1,16 +1,11 @@
 package io.github.oz.damage2health;
 
+import io.github.oz.damage2health.config.ConfigManager;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public final class HealthManager {
-
-    /**
-     * Vanilla cannot properly display more than 1024 HP
-     * (512 hearts) without AttributeFix.
-     */
-    public static final double VANILLA_MAX_HEALTH = 1024.0;
 
     private HealthManager() {
     }
@@ -24,14 +19,26 @@ public final class HealthManager {
             return;
         }
 
-        float totalDamage = PlayerDamageTracker.get(player);
+        double startingHealth =
+                ConfigManager.getConfig().startingHealth;
 
-        double oldMaxHealth = maxHealth.getBaseValue();
-        double newMaxHealth = 20.0 + totalDamage;
+        double damageMultiplier =
+                ConfigManager.getConfig().damageMultiplier;
+
+        double totalDamage =
+                PlayerDamageTracker.get(player) * damageMultiplier;
+
+        double newMaxHealth =
+                startingHealth + totalDamage;
 
         if (!Damage2Health.ATTRIBUTE_FIX_INSTALLED) {
-            newMaxHealth = Math.min(newMaxHealth, VANILLA_MAX_HEALTH);
+            newMaxHealth = Math.min(
+                    newMaxHealth,
+                    ConfigManager.getConfig().vanillaHealthCap
+            );
         }
+
+        double oldMaxHealth = maxHealth.getBaseValue();
 
         maxHealth.setBaseValue(newMaxHealth);
 
