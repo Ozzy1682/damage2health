@@ -1,27 +1,31 @@
 package io.github.oz.damage2health;
 
+import io.github.oz.damage2health.data.DamageAttachments;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 public final class PlayerDamageTracker {
-
-    private static final Map<UUID, Float> DAMAGE = new HashMap<>();
 
     private PlayerDamageTracker() {
     }
 
     public static float get(ServerPlayerEntity player) {
-        return DAMAGE.getOrDefault(player.getUuid(), 0.0F);
+        Float damage = player.getAttached(DamageAttachments.TOTAL_DAMAGE);
+        return damage != null ? damage : 0.0F;
     }
 
     public static void add(ServerPlayerEntity player, float amount) {
-        DAMAGE.merge(player.getUuid(), amount, Float::sum);
+        float current = get(player);
+
+        player.setAttached(
+                DamageAttachments.TOTAL_DAMAGE,
+                current + amount
+        );
     }
 
     public static void reset(ServerPlayerEntity player) {
-        DAMAGE.remove(player.getUuid());
+        player.setAttached(
+                DamageAttachments.TOTAL_DAMAGE,
+                0.0F
+        );
     }
 }

@@ -1,38 +1,43 @@
 {
-	"schemaVersion": 1,
-	"id": "damage2health",
-	"version": "${version}",
-	"name": "Damage2Health",
-	"description": "Increases your maximum health by the amount of damage you deal to mobs. Players are not affected.",
-	"authors": [
-		"jovial_curie49 (CurseForge) and fifteen54 (Modrinth)"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/damage2health/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"io.github.oz.damage2health.Damage2Health"
-		],
-		"client": [
-			"io.github.oz.damage2health.client.Damage2HealthClient"
-		]
-	},
-	"mixins": [
-		"damage2health.mixins.json",
-		{
-			"config": "damage2health.client.mixins.json",
-			"environment": "client"
-		}
-	],
-	"depends": {
-		"fabricloader": ">=0.19.3",
-		"minecraft": "~1.21.1",
-		"java": ">=21",
-		"fabric-api": "*"
-	}
+  "schemaVersion": 1,
+  "id": "damage2health",
+  "version": "${version}",
+
+  "name": "Damage To Health",
+  "description": "Gain permanent maximum health based on the damage you take. Player progress is saved between sessions. Supports AttributeFix for unlimited health.",
+  "authors": [
+    "jovial_curie49"
+  ],
+
+  "contact": {
+    "homepage": "https://modrinth.com/mod/damage-to-health",
+    "sources": "https://github.com/YOUR_GITHUB_USERNAME/damage2health"
+  },
+
+  "license": "MIT",
+
+  "icon": "assets/damage2health/icon.png",
+
+  "environment": "*",
+
+  "entrypoints": {
+    "main": [
+      "io.github.oz.damage2health.Damage2Health"
+    ]
+  },
+
+  "mixins": [
+    "damage2health.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+
+  "suggests": {
+    "attributefix": "*"
+  }
 }
