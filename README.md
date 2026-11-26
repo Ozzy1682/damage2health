@@ -1,4 +1,3 @@
-cat > README.md <<'EOF'
 # Damage2Health
 
 **Damage2Health** is a Minecraft mod that increases your maximum health based on the damage you deal to mobs.
@@ -64,4 +63,3 @@ For Fabric development setup instructions, see the [Fabric documentation](https:
 ## License
 
 Damage2Health is licensed under the [MIT License](LICENSE).
-EOF
