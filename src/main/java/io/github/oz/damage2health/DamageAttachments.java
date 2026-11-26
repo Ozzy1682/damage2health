@@ -19,4 +19,7 @@ public final class DamageAttachments {
                             .persistent(Codec.FLOAT)
                             .copyOnDeath()
             );
+
+    public static void initialize() {
+    }
 }
