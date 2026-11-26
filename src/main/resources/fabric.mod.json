@@ -4,14 +4,14 @@
   "version": "${version}",
 
   "name": "Damage To Health",
-  "description": "Gain permanent maximum health based on the damage you take. Player progress is saved between sessions. Supports AttributeFix for unlimited health.",
+  "description": "Gain permanent maximum health based on the damage you deal to mobs. Player progress is saved between sessions. Supports AttributeFix for exceeding the vanilla health limit.",
   "authors": [
-    "jovial_curie49"
+    "Fifteen54"
   ],
 
   "contact": {
-    "homepage": "https://modrinth.com/mod/damage-to-health",
-    "sources": "https://github.com/YOUR_GITHUB_USERNAME/damage2health"
+    "homepage": "https://modrinth.com/mod/damage2health",
+    "sources": "https://github.com/Ozzy1682/damage2health"
   },
 
   "license": "MIT",

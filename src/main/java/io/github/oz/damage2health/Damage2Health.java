@@ -1,5 +1,6 @@
 package io.github.oz.damage2health;
 
+import io.github.oz.damage2health.data.DamageAttachments;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.loader.api.FabricLoader;
@@ -20,6 +21,9 @@ public class Damage2Health implements ModInitializer {
 
     @Override
     public void onInitialize() {
+
+        // Register persistent attachments before world loading.
+        DamageAttachments.initialize();
 
         ATTRIBUTE_FIX_INSTALLED =
                 FabricLoader.getInstance()
